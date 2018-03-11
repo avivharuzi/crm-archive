@@ -1,0 +1,24 @@
+<div *ngIf="customerDetails" class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{ customerDetails.name | capitalize }}</li>
+        <li class="list-group-item">{{ customerDetails.number }}</li>
+        <li class="list-group-item">{{ customerDetails.country | capitalize }} {{ customerDetails.city | capitalize }} {{ customerDetails.street | capitalize }}</li>
+        <li class="list-group-item"><img [src]="customerDetails.countryImage" width="50px"></li>
+        <li class="list-group-item">Joined From {{ customerDetails.joined | date:'mediumDate' }}</li>
+        <li class="list-group-item">
+          <app-messages *ngIf="!customerDetails.description; else description" [message]="'No description about the company yet'" [type]="'info'"></app-messages>
+          <ng-template #description>
+            <p>{{ customerDetails.description }}</p>
+          </ng-template>
+        </li>
+      </ul>
+    </div>
+    <div class="col-lg-4">
+      <img [src]="pathImages + '/' + customerDetails.image" class="img-fluid" alt="logo">
+    </div>
+  </div>
+  <app-recipe-form [customerId]="customerDetails._id" (recipeSuccess)="addRecipe($event)"></app-recipe-form>
+  <app-recipes-table [recipes]="recipes"></app-recipes-table>
+</div>

@@ -1,0 +1,37 @@
+<div *ngIf="recipes" class="row mt-5">
+  <div *ngIf="recipes && recipes.length; else noRecipes" class="col-lg-12">
+    <table class="table">
+      <thead class="blue-grey lighten-4">
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Subtitle</th>
+          <th>Owner</th>
+          <th>Original Price</th>
+          <th>Price</th>
+          <th>Discount</th>
+          <th>Payment</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let recipe of recipes; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ recipe.title | capitalize }}</td>
+          <td>{{ recipe.subtitle | capitalize }}</td>
+          <td>{{ recipe.ownerName | capitalize }}</td>
+          <td>{{ recipe.originalPrice | currency:recipe.currency }}</td>
+          <td>{{ recipe.price | currency:recipe.currency }}</td>
+          <td>{{ recipe.discount + '%' }}</td>
+          <td>{{ recipe.payment | capitalize }}</td>
+          <td>{{ recipe.date | date:'full' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noRecipes>
+    <div class="col-lg-12">
+      <app-messages [type]="'warning'" [message]="'There are no recipes right now'"></app-messages>
+    </div>
+  </ng-template>
+</div>

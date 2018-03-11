@@ -1,0 +1,16 @@
+<div class="card text-center">
+  <div [routerLink]="customer.name" class="view hm-white-slight waves-light" mdbRippleRadius>
+    <img [src]="pathImages + '/' + customer.image" class="img-fluid" alt="logo">
+    <a>
+      <div class="mask"></div>
+    </a>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title bg-warning text-light p-2">{{ customer.name | capitalize }}</h4>
+    <app-messages *ngIf="!customer.description; else description" [message]="'No description about the company yet'" [type]="'info'"></app-messages>
+    <ng-template #description>
+      <p>{{ customer.description }}</p>
+    </ng-template>
+    <a class="btn btn-dark btn-block waves-light" [routerLink]="customer.name" mdbRippleRadius>Details</a>
+  </div>
+</div>

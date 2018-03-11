@@ -1,0 +1,70 @@
+<button type="button" class="btn btn-success waves-light" data-toggle="modal" data-target="#addNewRecipe" (click)="demoBasic.show()"
+  mdbRippleRadius>
+  Add New Recipe
+</button>
+
+<div mdbModal #demoBasic="mdb-modal" class="modal fade" id="addNewRecipe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100" id="myModalLabel">Add New Recipe</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="demoBasic.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-messages *ngIf="messageForm && typeMessage" [type]="typeMessage" [message]="messageForm"></app-messages>
+        <form [formGroup]="recipeForm" (ngSubmit)="setRecipeForm()" autocomplete="off" novalidate>
+          <div class="md-form">
+            <input type="text" formControlName="title"
+            [ngClass]="validationService.statusClass(recipeForm.controls['title'])"
+            id="title" class="form-control" mdbActive>
+            <label for="title">Title</label>
+          </div>
+          <app-error-form class="invalid-feedback" [control]="recipeForm.controls['title']"></app-error-form>
+          <div class="md-form">
+            <input type="text" formControlName="subtitle"
+            [ngClass]="validationService.statusClass(recipeForm.controls['subtitle'])"
+            id="subtitle" class="form-control" mdbActive>
+            <label for="subtitle">Subtitle</label>
+          </div>
+          <app-error-form class="invalid-feedback" [control]="recipeForm.controls['subtitle']"></app-error-form>
+          <div class="md-form">
+            <input type="number" formControlName="price"
+            [ngClass]="validationService.statusClass(recipeForm.controls['price'])"
+            id="price" class="form-control" mdbActive>
+            <label for="price">Price</label>
+          </div>
+          <app-error-form class="invalid-feedback" [control]="recipeForm.controls['price']"></app-error-form>
+          <div class="md-form">
+            <input type="number" formControlName="discount"
+            [ngClass]="validationService.statusClass(recipeForm.controls['discount'])"
+            id="discount" class="form-control" mdbActive>
+            <label for="discount">Discount %</label>
+          </div>
+          <app-error-form class="invalid-feedback" [control]="recipeForm.controls['discount']"></app-error-form>
+          <div class="form-group">
+            <label for="currency">Currency</label>
+            <select id="currency" formControlName="currency" class="form-control">
+              <option value="ILS">ILS</option>
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+            </select>
+          </div>
+          <app-error-form class="invalid-feedback" [control]="recipeForm.controls['currency']"></app-error-form>
+          <div class="form-group">
+            <label for="payment">Payment</label>
+            <select id="payment" formControlName="payment" class="form-control">
+              <option value="cash">Cash</option>
+              <option value="check">Check</option>
+              <option value="credit card">Credit Card</option>
+            </select>
+          </div>
+          <app-error-form class="invalid-feedback" [control]="recipeForm.controls['payment']"></app-error-form>
+          <button [disabled]="!recipeForm.valid" class="btn btn-primary btn-block" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

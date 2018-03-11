@@ -1,0 +1,25 @@
+<div *ngIf="companyDetails" class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-lg-8">
+      <div class="card text-center">
+        <div class="card-header bg-dark white-text">
+          My Account
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">{{ companyDetails.name | capitalize }}</h4>
+          <p class="card-text"><img [src]="pathImages + '/' + companyDetails.image" width="150px" alt="logo"></p>
+          <p class="card-text">{{ companyDetails.number }}</p>
+          <p class="card-text">{{ companyDetails.country | capitalize }} {{ companyDetails.city | capitalize }} {{ companyDetails.street | capitalize }}</p>
+          <p class="card-text"><img [src]="companyDetails.countryImage" width="50px"></p>
+          <app-messages *ngIf="!companyDetails.description; else description" [message]="'No description about the company yet'" [type]="'info'"></app-messages>
+          <ng-template #description>
+            <p>{{ companyDetails.description }}</p>
+          </ng-template>
+        </div>
+        <div class="card-footer text-muted bg-dark white-text">
+          <p class="mb-0">Joined From {{ companyDetails.joined | date:'mediumDate' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

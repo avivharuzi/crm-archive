@@ -1,0 +1,38 @@
+<div [ngSwitch]="type" [ngClass]="class">
+  <!-- Warning Alert -->
+  <div *ngSwitchCase="'warning'" class="alert alert-warning text-center">
+    <div *ngIf="isArray(message); else warningSingle">
+      <p *ngFor="let msg of message" class="lead"><i class="fa fa-exclamation-circle mr-2"></i>{{ msg }}</p>
+    </div>
+    <ng-template #warningSingle>
+      <p class="lead"><i class="fa fa-exclamation-circle mr-2"></i>{{ message }}</p>
+    </ng-template>
+  </div>
+  <!-- Danger Alert -->
+  <div *ngSwitchCase="'danger'" class="alert alert-danger text-center">
+    <div *ngIf="isArray(message); else dangerSingle">
+      <p *ngFor="let msg of message" class="lead"><i class="fa fa-exclamation-triangle mr-2"></i>{{ msg }}</p>
+    </div>
+    <ng-template #dangerSingle>
+      <p class="lead"><i class="fa fa-exclamation-triangle mr-2"></i>{{ message }}</p>
+    </ng-template>
+  </div>
+  <!-- Success Alert -->
+  <div *ngSwitchCase="'success'" class="alert alert-success text-center">
+    <div *ngIf="isArray(message); else successSingle">
+      <p *ngFor="let msg of message" class="lead"><i class="fa fa-check-circle mr-2"></i>{{ msg }}</p>
+    </div>
+    <ng-template #successSingle>
+      <p class="lead"><i class="fa fa-check-circle mr-2"></i>{{ message }}</p>
+    </ng-template>
+  </div>
+  <!-- Info Alert -->
+  <div *ngSwitchCase="'info'" class="alert alert-info text-center">
+    <div *ngIf="isArray(message); else infoSingle">
+      <p *ngFor="let msg of message" class="lead"><i class="fa fa-info-circle mr-2"></i>{{ msg }}</p>
+    </div>
+    <ng-template #infoSingle>
+      <p class="lead"><i class="fa fa-info-circle mr-2"></i>{{ message }}</p>
+    </ng-template>
+  </div>
+</div>

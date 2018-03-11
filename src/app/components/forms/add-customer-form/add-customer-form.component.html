@@ -1,0 +1,29 @@
+<button type="button" class="btn btn-success waves-light" data-toggle="modal" data-target="#addNewCustomer" (click)="demoBasic.show()"
+  mdbRippleRadius>
+  Add New Customer
+</button>
+
+<div mdbModal #demoBasic="mdb-modal" class="modal fade" id="addNewCustomer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100" id="myModalLabel">Add New Customer</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="demoBasic.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-messages *ngIf="typeMessage && messageForm" [type]="typeMessage" [message]="messageForm"></app-messages>
+        <select *ngIf="customers && customers.length" [(ngModel)]="newCustomer">
+          <option [value]="null" disabled>Choose Customer</option>
+          <option *ngFor="let customer of customers" [value]="customer._id">{{ customer.name | capitalize }}</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm waves-light" data-dismiss="modal" (click)="demoBasic.hide()" mdbRippleRadius>Close</button>
+        <button type="button" class="btn btn-primary btn-sm waves-light" (click)="addCustomer()" mdbRippleRadius>Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

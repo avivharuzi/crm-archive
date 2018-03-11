@@ -1,0 +1,42 @@
+.custom-b4-file {
+	padding: 3px 5px;
+  width: 100%;
+  color: #495057;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.is-invalid, .is-valid {
+  background-position: right 15px center;
+  background-repeat: no-repeat;
+  padding-right: 45px;
+}
+
+.invalid-feedback {
+  display: block !important;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  z-index: 999;
+  width: 100%;
+}
+
+select {
+  border-radius: 5px !important;
+  padding: 10px !important;
+  height: 44px !important;;
+}
+
+select option {
+  border-radius: 5px !important;
+  padding: 10px !important;
+  height: 44px !important;;
+}
+
+h4.card-title {
+  border-radius: 2px;
+}

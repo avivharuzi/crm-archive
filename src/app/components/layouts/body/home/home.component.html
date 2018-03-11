@@ -1,0 +1,11 @@
+<div *ngIf="companyDetails" class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 text-center">
+      <h1 class="mb-5">Welcome To Our {{ companyDetails.name | capitalize }} Company</h1>
+      <img [src]="pathImages + '/' + companyDetails.image" height="300px" alt="logo">
+      <h3 class="mt-5 mb-3">{{ companyDetails.street | capitalize }} - {{ companyDetails.city | capitalize }}</h3>
+      <h4 class="mb-5 text-secondary">{{ companyDetails.country | capitalize }}</h4>
+      <img [src]="companyDetails.countryImage" height="150px" alt="logo">
+    </div>
+  </div>
+</div>

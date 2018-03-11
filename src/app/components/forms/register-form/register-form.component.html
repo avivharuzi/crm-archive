@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-lg-6">
+      <form [formGroup]="registerForm" (ngSubmit)="setRegisterForm()" autocomplete="off" novalidate>
+        <h2 class="text-center mb-5 p-4 bg-dark text-light"><i class="fa fa-pencil mr-3"></i>Register</h2>
+        <app-messages *ngIf="registerMessage && typeMessage"
+        [type]="typeMessage" [message]="registerMessage" [class]="'mb-5'">
+        </app-messages>
+        <div class="md-form">
+          <i class="fa fa-users prefix grey-text"></i>
+          <input type="text" formControlName="name" id="name"
+          [ngClass]="validationService.statusClass(registerForm.controls['name'])"
+          class="form-control" mdbActive>
+          <label for="name">Company Name</label>
+        </div>
+        <app-error-form class="invalid-feedback" [control]="registerForm.controls['name']"></app-error-form>
+        <div class="md-form">
+          <i class="fa fa-sort-numeric-asc prefix grey-text"></i>
+          <input type="text" formControlName="number" id="number"
+          [ngClass]="validationService.statusClass(registerForm.controls['number'])"
+          class="form-control" mdbActive>
+          <label for="number">Company Number</label>
+        </div>
+        <app-error-form class="invalid-feedback" [control]="registerForm.controls['number']"></app-error-form>
+        <div class="md-form">
+          <i class="fa fa-user prefix grey-text"></i>
+          <input type="text" formControlName="username" id="username"
+          [ngClass]="validationService.statusClass(registerForm.controls['username'])"
+          class="form-control" mdbActive>
+          <label for="username">Username</label>
+        </div>
+        <app-error-form class="invalid-feedback" [control]="registerForm.controls['username']"></app-error-form>
+        <div class="md-form">
+          <i class="fa fa-lock prefix grey-text"></i>
+          <input type="password" formControlName="password" id="password"
+          [ngClass]="validationService.statusClass(registerForm.controls['password'])"
+          class="form-control" mdbActive>
+          <label for="password">Password</label>
+        </div>
+        <app-error-form class="invalid-feedback" [control]="registerForm.controls['password']"></app-error-form>
+        <div class="form-group">
+          <label for="file">Select Country</label>
+          <select class="form-control" formControlName="country">
+            <option *ngFor="let country of countries"
+            [value]="country.name">{{ country.name }}</option>
+          </select>
+        </div>
+        <div class="md-form">
+          <i class="fa fa-map-marker prefix grey-text"></i>
+          <input type="text" formControlName="city" id="city"
+          [ngClass]="validationService.statusClass(registerForm.controls['city'])"
+          class="form-control" mdbActive>
+          <label for="city">City</label>
+        </div>
+        <app-error-form class="invalid-feedback" [control]="registerForm.controls['city']"></app-error-form>
+        <div class="md-form">
+          <i class="fa fa-map-signs prefix grey-text"></i>
+          <input type="text" formControlName="street" id="street"
+          [ngClass]="validationService.statusClass(registerForm.controls['street'])"
+          class="form-control" mdbActive>
+          <label for="street">Street</label>
+        </div>
+        <app-error-form class="invalid-feedback" [control]="registerForm.controls['street']"></app-error-form>
+        <div class="form-group">
+          <label for="file">Company Image</label>
+          <input #fileImage type="file" id="file" name="companyImage" (change)="changeCompanyImage($event)" class="custom-b4-file">
+        </div>
+        <div class="form-group">
+          <small class="text-muted">Already have an account? <a routerLink="/login">Login</a></small>
+        </div>
+        <div class="text-center">
+          <button [disabled]="!registerForm.valid" type="submit" class="btn btn-primary btn-block waves-light" mdbRippleRadius>Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
