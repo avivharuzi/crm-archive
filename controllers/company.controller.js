@@ -75,9 +75,9 @@ class CompanyController {
     static checkCompanyImage(company) {
         return new Promise((resolve, reject) => {
             FileHandler.checkFilesErrors(company.files.image, 'image', 2)
-                .then(FileHandler.moveFiles)
-                .then((newFileNames) => {
-                    company.image = newFileNames[0];
+                .then(FileHandler.uploadFileToAmazonS3)
+                .then((newFileName) => {
+                    company.image = newFileName;
                     resolve(company);
                 })
                 .catch((err) => reject(err));

@@ -1,4 +1,5 @@
 const fs = require('fs');
+const AWS = require('aws-sdk');
 
 class FileHandler {
     static checkFileType(file, type) {
@@ -96,6 +97,41 @@ class FileHandler {
             }
 
             resolve(newFileNames);
+        });
+    }
+
+    static uploadFileToAmazonS3(file) {
+        if (file.constructor === Array) {
+            file = file[0];
+        }
+
+        return new Promise((resolve, rejct) => {
+            let s3bucket = new AWS.S3({
+                accessKeyId: process.env.AWS_S3_ACCESS_KEY,
+                secretAccessKey: process.env.AWS_S3_SECRET_KEY,
+                Bucket: process.env.AWS_S3_BUCKET_NAME
+            });
+    
+            s3bucket.createBucket(function () {
+                const fileExt = file.name.split('.');
+                const fileActualExt = fileExt[fileExt.length - 1];
+                const uid = Date.now().toString();
+                const newFileName = uid + '.' + fileActualExt;
+
+                let params = {
+                    Bucket: process.env.AWS_S3_BUCKET_NAME,
+                    Key: newFileName,
+                    Body: file.data
+                };
+    
+                s3bucket.upload(params, function (err, data) {
+                    if (err) {
+                        reject(['There was problem by uploading this file']);
+                    } else {
+                        resolve(data.key);
+                    }
+                });
+            });
         });
     }
 
