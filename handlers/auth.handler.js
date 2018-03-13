@@ -24,7 +24,7 @@ class AuthHandler {
         return new Promise((resolve, reject) => {
             jwt.sign(user.toJSON(), process.env.JWT_SECRET, { expiresIn: '1h' }, (err, token) => {
                 if (err) {
-                    reject(['There was problem by sign the use with token']);
+                    reject(['There was problem by sign the user with token']);
                 } else {
                     resolve(token);
                 }
