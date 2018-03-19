@@ -14,6 +14,7 @@ export class RecipeFormComponent implements OnInit {
   public recipeForm: FormGroup;
   public messageForm: any;
   public typeMessage: string;
+  public loading: boolean;
 
   @Input()
   public customerId: any;
@@ -69,6 +70,8 @@ export class RecipeFormComponent implements OnInit {
 
   setRecipeForm(): void {
     if (this.recipeForm.valid) {
+      this.loading = true;
+
       const recipe: Recipe = new Recipe(
         this.recipeForm.get('title').value,
         this.recipeForm.get('subtitle').value,
@@ -84,9 +87,11 @@ export class RecipeFormComponent implements OnInit {
         this.messageForm = res.message;
         this.recipeForm.reset();
         this.recipeSuccess.emit(res.data);
+        this.loading = false;
       }, (err) => {
         this.typeMessage = 'danger';
         this.messageForm = err.errors;
+        this.loading = false;
       });
     }
   }

@@ -14,6 +14,7 @@ export class LoginFormComponent implements OnInit {
   public loginForm: FormGroup;
   public loginMessage: any;
   public typeMessage: string;
+  public loading: boolean;
 
   constructor(
     private authService: AuthService,
@@ -21,6 +22,7 @@ export class LoginFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loading = false;
     this.createLoginForm();
     this.loginMessage = null;
     this.typeMessage = null;
@@ -43,6 +45,8 @@ export class LoginFormComponent implements OnInit {
 
   setLoginForm(): void {
     if (this.loginForm.valid) {
+      this.loading = true;
+
       const user: User = new User(
         this.loginForm.get('username').value,
         this.loginForm.get('password').value
@@ -55,11 +59,13 @@ export class LoginFormComponent implements OnInit {
   loginUser(user) {
     this.authService.login(user).subscribe((res: any) => {
       if (res) {
+        this.loading = false;
         this.router.navigate(['/']);
       }
     }, err => {
       this.loginMessage = err.errors;
       this.typeMessage = 'danger';
+      this.loading = false;
     });
   }
 }

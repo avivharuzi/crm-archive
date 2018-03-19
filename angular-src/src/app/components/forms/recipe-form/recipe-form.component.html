@@ -1,6 +1,6 @@
-<button type="button" class="btn btn-success waves-light" data-toggle="modal" data-target="#addNewRecipe" (click)="demoBasic.show()"
+<button type="button" class="btn btn-indigo waves-light" data-toggle="modal" data-target="#addNewRecipe" (click)="demoBasic.show()"
   mdbRippleRadius>
-  Add New Recipe
+  <i class="fa fa-plus mr-3"></i>Add New Recipe
 </button>
 
 <div mdbModal #demoBasic="mdb-modal" class="modal fade" id="addNewRecipe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -15,6 +15,7 @@
       </div>
       <div class="modal-body">
         <app-messages *ngIf="messageForm && typeMessage" [type]="typeMessage" [message]="messageForm"></app-messages>
+        <app-loading [loading]="loading"></app-loading>
         <form [formGroup]="recipeForm" (ngSubmit)="setRecipeForm()" autocomplete="off" novalidate>
           <div class="md-form">
             <input type="text" formControlName="title"

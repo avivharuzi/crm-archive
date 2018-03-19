@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressRouterModule } from '@ngx-progressbar/router';
+import { LoadingModule } from './modules/loading/loading.module';
 
 // Components
 import { AppComponent } from './app.component';
@@ -80,7 +81,8 @@ import { SearchPipe } from './pipes/search/search.pipe';
     RouterModule,
     NgProgressModule.forRoot(),
     NgProgressRouterModule,
-    HttpClientModule
+    HttpClientModule,
+    LoadingModule.forRoot()
   ],
   providers: [
     CountryService,

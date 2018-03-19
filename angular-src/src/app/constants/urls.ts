@@ -1,6 +1,7 @@
 // const BASE_URL: string = 'http://localhost:8080';
 
 const BASE_URL: string = '';
+
 const BASE_AMAZON_S3_BUCKET_URL = 'https://avivharuzi-crm.s3.eu-west-3.amazonaws.com';
 
 export const BASE_COMPANY_URL: string = `${BASE_URL}/api/company`;
@@ -25,3 +26,5 @@ export const GET_COUNTRIES_URL: string = `${BASE_URL}/api/countries`;
 export const NO_AUTHORIZATION_URLS: string[] = [SET_COMPANY_URL, LOGIN_URL, GET_COUNTRIES_URL];
 
 export const PATH_IMAGES: string = `${BASE_AMAZON_S3_BUCKET_URL}`;
+
+export const LOADING_GIF_PATH: string = 'assets/images/tools/loading.gif';

@@ -1,6 +1,6 @@
-<button type="button" class="btn btn-success waves-light" data-toggle="modal" data-target="#addNewCustomer" (click)="demoBasic.show()"
+<button type="button" class="btn btn-indigo waves-light" data-toggle="modal" data-target="#addNewCustomer" (click)="demoBasic.show()"
   mdbRippleRadius>
-  Add New Customer
+  <i class="fa fa-plus mr-3"></i>Add New Customer
 </button>
 
 <div mdbModal #demoBasic="mdb-modal" class="modal fade" id="addNewCustomer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -15,14 +15,11 @@
       </div>
       <div class="modal-body">
         <app-messages *ngIf="typeMessage && messageForm" [type]="typeMessage" [message]="messageForm"></app-messages>
-        <select *ngIf="customers && customers.length" [(ngModel)]="newCustomer">
+        <select *ngIf="customers && customers.length" [(ngModel)]="newCustomer" class="form-control">
           <option [value]="null" disabled>Choose Customer</option>
           <option *ngFor="let customer of customers" [value]="customer._id">{{ customer.name | capitalize }}</option>
         </select>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary btn-sm waves-light" data-dismiss="modal" (click)="demoBasic.hide()" mdbRippleRadius>Close</button>
-        <button type="button" class="btn btn-primary btn-sm waves-light" (click)="addCustomer()" mdbRippleRadius>Save changes</button>
+        <button type="button" class="btn btn-primary btn-block waves-light" (click)="addCustomer()" mdbRippleRadius>Submit</button>
       </div>
     </div>
   </div>

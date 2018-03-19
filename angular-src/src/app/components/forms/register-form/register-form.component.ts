@@ -18,6 +18,7 @@ export class RegisterFormComponent implements OnInit {
   public companyImage: File;
   public registerMessage: any;
   public typeMessage: string;
+  public loading: boolean;
 
   @ViewChild('fileImage')
   public fileImage: any;
@@ -29,6 +30,7 @@ export class RegisterFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loading = false;
     this.createRegisterForm();
     this.getCountries();
     this.registerMessage = null;
@@ -96,6 +98,8 @@ export class RegisterFormComponent implements OnInit {
     }
 
     if (this.registerForm.valid) {
+      this.loading = true;
+
       let countryName: any = this.registerForm.get('country').value;
 
       this.countryService.getCountryByName(countryName).subscribe((res: any) => {
@@ -124,9 +128,11 @@ export class RegisterFormComponent implements OnInit {
       this.typeMessage = 'success';
       this.registerForm.reset();
       this.resetCompanyImage();
+      this.loading = false;
     }, (err) => {
       this.registerMessage = err;
       this.typeMessage = 'danger';
+      this.loading = false;
     });
   }
 
