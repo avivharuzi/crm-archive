@@ -50,11 +50,11 @@ export class RecipeFormComponent implements OnInit {
       Validator.required('Discount')
     ]);
 
-    const currency = new FormControl('', [
+    const currency = new FormControl('ILS', [
       Validator.required('Cuurency')
     ]);
 
-    const payment = new FormControl('', [
+    const payment = new FormControl('cash', [
       Validator.required('Payment')
     ]);
 
