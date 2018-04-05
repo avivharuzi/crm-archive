@@ -80,6 +80,7 @@ export class RegisterFormComponent implements OnInit {
   getCountries() {
     this.countryService.getCountries().subscribe((res: any) => {
       this.countries = res;
+      this.registerForm.get('country').setValue(this.countries[0].name);
     }, (err) => {
       console.log(err);
     });

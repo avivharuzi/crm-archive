@@ -8,12 +8,6 @@
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
-.is-invalid, .is-valid {
-  background-position: right 15px center;
-  background-repeat: no-repeat;
-  padding-right: 45px;
-}
-
 .invalid-feedback {
   display: block !important;
 }

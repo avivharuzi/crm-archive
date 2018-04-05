@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center mt-5">
     <div class="col-lg-6">
-      <app-loading [loading]="loading"></app-loading>
+      <app-loading [loading]="loading" [background]="'white'"></app-loading>
       <form [formGroup]="loginForm" (ngSubmit)="setLoginForm()" autocomplete="off" novalidate>
         <h2 class="text-center mb-5 p-4 bg-dark text-light"><i class="fa fa-sign-in mr-3"></i>Login</h2>
         <app-messages *ngIf="loginMessage && typeMessage"
