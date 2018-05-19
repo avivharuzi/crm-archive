@@ -1,5 +1,3 @@
 node_modules
 angular-src/node_modules
-package-lock.json
-angular-src/package-lock.json
 .env
