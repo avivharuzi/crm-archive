@@ -1,6 +1,6 @@
-// const BASE_URL: string = 'http://localhost:8080';
+import { isDevMode } from '@angular/core';
 
-const BASE_URL: string = '';
+const BASE_URL: string = isDevMode() ? 'http://localhost:8080' : '';
 
 const BASE_AMAZON_S3_BUCKET_URL = 'https://avivharuzi-crm.s3.eu-west-3.amazonaws.com';
 
