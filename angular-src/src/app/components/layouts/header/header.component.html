@@ -1,17 +1,17 @@
 <nav *ngIf="companyDetails" class="navbar navbar-expand-lg navbar-dark indigo scrolling-navbar">
   <div class="container">
   <a class="navbar-brand" routerLink="">CRM</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
-  aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" (click)="toggleNavMobile()" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+  aria-expanded="true" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarText">
+  <div class="collapse navbar-collapse" [ngClass]="{ 'd-block': isNavOpen }" id="navbarText">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item"><a class="nav-link" routerLink="">Home</a></li>
-      <li class="nav-item"><a class="nav-link" routerLink="customers">Customers</a></li>
-      <li class="nav-item"><a class="nav-link" routerLink="recipes">My Recipes</a></li>
-      <li class="nav-item"><a class="nav-link" routerLink="account">My Account</a></li>
-      <li class="nav-item"><a class="nav-link" (click)="logout()"><i class="fa fa-sign-out mr-2"></i>Logout</a></li>
+      <li class="nav-item"><a class="nav-link waves-light" mdbWavesEffect routerLink="">Home</a></li>
+      <li class="nav-item"><a class="nav-link waves-light" mdbWavesEffect routerLink="customers">Customers</a></li>
+      <li class="nav-item"><a class="nav-link waves-light" mdbWavesEffect routerLink="recipes">My Recipes</a></li>
+      <li class="nav-item"><a class="nav-link waves-light" mdbWavesEffect routerLink="account">My Account</a></li>
+      <li class="nav-item"><a class="nav-link waves-light" mdbWavesEffect (click)="logout()"><i class="fa fa-sign-out mr-2"></i>Logout</a></li>
     </ul>
     <span class="navbar-text white-text">
       <span class="mr-3">{{ companyDetails.name | capitalize }}</span>
