@@ -3,6 +3,7 @@ const router = express.Router();
 
 const RouteHandler = require('./../handlers/route.handler');
 const AuthHandler = require('./../handlers/auth.handler');
+
 const CompanyController = require('./../controllers/company.controller');
 
 router.post('/register', (req, res) => {

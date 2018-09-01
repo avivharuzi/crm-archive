@@ -1,4 +1,5 @@
 const Company = require('./../models/company.model');
+
 const ValidationHandler = require('./../handlers/validation.handler');
 const FileHandler = require('./../handlers/file.handler');
 
