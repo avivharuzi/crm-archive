@@ -69,6 +69,8 @@ export class RecipeFormComponent implements OnInit {
   }
 
   setRecipeForm(): void {
+    this.validationService.dirtyAllInputs(this.recipeForm);
+
     if (this.recipeForm.valid) {
       this.loading = true;
 

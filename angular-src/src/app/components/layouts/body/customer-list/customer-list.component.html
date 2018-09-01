@@ -1,8 +1,8 @@
-<div *ngIf="customers" class="container mt-5">
+<div *ngIf="customers" class="container mt-5 mb-5">
   <app-add-customer-form (customerSuccess)="getCustomers()"></app-add-customer-form>
   <div *ngIf="customers.length; else noCustomers" class="mt-3">
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col-lg-12 mt-3">
         <div class="md-form">
           <i class="fa fa-search prefix"></i>
           <input mdbActive type="text" id="searchCustomers" [(ngModel)]="searchCustomers" class="form-control">
@@ -10,8 +10,8 @@
         </div>
       </div>
     </div>
-    <div class="row mt-5">
-      <app-customer-item *ngFor="let customer of customers | search:searchCustomers:'name'" [customer]="customer" class="col-lg-4"></app-customer-item>
+    <div class="row">
+      <app-customer-item *ngFor="let customer of customers | search:searchCustomers:'name'" [customer]="customer" class="col-lg-4 mt-5"></app-customer-item>
     </div>
   </div>
   <ng-template #noCustomers>

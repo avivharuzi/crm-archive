@@ -1,5 +1,5 @@
-<div class="container">
-  <div class="row justify-content-center mt-5">
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
     <div class="col-lg-6">
       <app-loading [loading]="loading" [background]="'white'"></app-loading>
       <form [formGroup]="registerForm" (ngSubmit)="setRegisterForm()" autocomplete="off" novalidate>
@@ -70,7 +70,7 @@
           <small class="text-muted">Already have an account? <a routerLink="/login">Login</a></small>
         </div>
         <div class="text-center">
-          <button [disabled]="!registerForm.valid" type="submit" class="btn btn-primary btn-block waves-light" mdbRippleRadius>Submit</button>
+          <button type="submit" class="btn btn-primary btn-block waves-light" mdbRippleRadius>Submit</button>
         </div>
       </form>
     </div>

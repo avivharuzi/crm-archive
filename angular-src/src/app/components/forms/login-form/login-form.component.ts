@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validator } from '../../../models/validator.model';
+import { ValidationService } from '../../../services/validation/validation.service';
 import { AuthService } from '../../../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { User } from '../../../models/user.model';
@@ -18,7 +19,8 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    public validationService: ValidationService
   ) { }
 
   ngOnInit() {
@@ -44,6 +46,8 @@ export class LoginFormComponent implements OnInit {
   }
 
   setLoginForm(): void {
+    this.validationService.dirtyAllInputs(this.loginForm);
+
     if (this.loginForm.valid) {
       this.loading = true;
 

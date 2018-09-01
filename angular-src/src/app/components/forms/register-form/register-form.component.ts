@@ -92,6 +92,8 @@ export class RegisterFormComponent implements OnInit {
   }
 
   setRegisterForm(): void {
+    this.validationService.dirtyAllInputs(this.registerForm);
+
     if (!this.companyImage) {
       this.registerMessage = 'You need to choose company image';
       this.typeMessage = 'danger';
