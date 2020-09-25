@@ -7,11 +7,11 @@ const recipeSchema = new Schema({
     subtitle: String,
     ownerName: String,
     ownerId: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.ObjectId,
         ref: 'Company'
     },
     customerId: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.ObjectId,
         ref: 'Company'
     },
     currency: String,
