@@ -17,11 +17,11 @@ const companySchema = new Schema({
     street: String,
     description: String,
     customers: [{
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.ObjectId,
         ref: 'Company'
     }],
     recipes: [{
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.ObjectId,
         ref: 'Recipe'
     }],
     joined: {

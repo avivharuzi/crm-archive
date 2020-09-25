@@ -9,7 +9,7 @@ const cors = require('cors');
 const path = require('path');
 
 mongoose.Promise = global.Promise;
-mongoose.connect(`mongodb://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@ds113019.mlab.com:13019/crm`);
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }).then();
 
 const AuthHandler = require('./handlers/auth.handler');
 
